@@ -8,6 +8,16 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 # Jupyter environment
 RUN pip3 install --disable-pip-version-check --no-cache-dir ipykernel jupyter
 
+RUN pip install --no-cache-dir \
+    qiskit \
+    matplotlib \
+    pillow \
+    pycryptodomex \
+    cryptography
+
+
+COPY test.py /home/vscode/workspace/test.py
+
 USER vscode
 
 RUN mkdir -p /home/vscode/workspace
